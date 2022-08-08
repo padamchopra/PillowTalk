@@ -1,0 +1,3 @@
+mixin ViewModelListener {
+  void onUpdateNotification();
+}

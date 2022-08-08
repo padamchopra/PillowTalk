@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "818796853809",
+    "project_id": "pillowtalk-20220806",
+    "storage_bucket": "pillowtalk-20220806.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:818796853809:android:103dbe83185b17658a3310",
+        "android_client_info": {
+          "package_name": "me.padamchopra.pillowtalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "818796853809-hm0v1mneod2bo2td0lfdt1eknt4al5ol.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw1Hm9iCrz--XTNbts1po3BJQ9aNPKJQw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "818796853809-hm0v1mneod2bo2td0lfdt1eknt4al5ol.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "818796853809-5d1h2n5gu90kof0grq39kl3kii5cg7tf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "me.padamchopra.pillowtalk"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

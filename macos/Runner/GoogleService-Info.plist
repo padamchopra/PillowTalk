@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>818796853809-5d1h2n5gu90kof0grq39kl3kii5cg7tf.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.818796853809-5d1h2n5gu90kof0grq39kl3kii5cg7tf</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA9HpEEhG5DfHWX5KRL5inU5KpNREhiTAE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>818796853809</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>me.padamchopra.pillowtalk</string>
+	<key>PROJECT_ID</key>
+	<string>pillowtalk-20220806</string>
+	<key>STORAGE_BUCKET</key>
+	<string>pillowtalk-20220806.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:818796853809:ios:32955ceb782f84ae8a3310</string>
+</dict>
+</plist>
