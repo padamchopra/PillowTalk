@@ -16,7 +16,7 @@ class AuthViewModel extends ViewModel {
   AuthViewModel() {
     _buildScreenModel();
     _useCase.stream.listen((step) {
-      _handleStateStepChange(step);
+      handleStateStepChange(step);
     },
       onError: (error) {
         ErrorMessageModel errorMessage = error;
@@ -30,7 +30,7 @@ class AuthViewModel extends ViewModel {
   String _otpCode = "";
   String _username = "";
 
-  void _handleStateStepChange(AuthFormStep step) {
+  void handleStateStepChange(AuthFormStep step) {
     switch(step) {
       case AuthFormStep.phone: {
         if (_screenModel.currentField != CredentialsFormField.number) {

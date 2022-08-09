@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:pillowtalk/data/source/firebase_ds.dart';
 import 'package:pillowtalk/data/source/user_service.dart';
 import 'package:pillowtalk/domain/models/auth/auth_form_step.dart';
+import 'package:pillowtalk/domain/models/auth/auth_landing_state.dart';
 import 'package:pillowtalk/domain/models/auth/my_user_model.dart';
 import 'package:pillowtalk/domain/models/generic/error_message_model.dart';
 import 'package:pillowtalk/domain/models/generic/result_model.dart';
@@ -55,21 +56,36 @@ class UserRepository {
       var uid = _remoteService.auth.currentUser?.uid;
       if (uid != null) {
         var result = await _userService.loadUserDetails(uid);
-        if (!result.isSuccess) {
-          return Result.error(error: result.error);
-        }
-        // result was success but no user found
-        if (result.isEmpty) {
-          return Result.success(AuthFormStep.username);
-        }
+        if (!result.isSuccess) return Result.error(error: result.error);
+
         // result was success and user found
         if (result.data != null) {
           _user = result.data;
           return Result.success(AuthFormStep.finished);
         }
+        // result was success but no user found
+        return Result.success(AuthFormStep.username);
       }
       // couldn't complete sign in so show error
       return Result.error();
+    } catch (e) {
+      return Result.error();
+    }
+  }
+
+  Future<Result<AuthLandingState>> isUserLoggedIn() async {
+    try {
+      var uid = _remoteService.auth.currentUser?.uid;
+      if (uid == null) return Result.success(AuthLandingState.noUser); // no user
+      if (_user != null) return Result.success(AuthLandingState.validUser);
+      var result = await _userService.loadUserDetails(uid);
+      if (!result.isSuccess) return Result.error(error: result.error);
+      if (result.data != null) {
+        _user = result.data;
+        return Result.success(AuthLandingState.validUser);
+      }
+      // result was successful but no user found (no username)
+      return Result.success(AuthLandingState.noUsername);
     } catch (e) {
       return Result.error();
     }

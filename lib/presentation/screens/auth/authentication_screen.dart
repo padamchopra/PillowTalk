@@ -54,21 +54,6 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> with ViewMo
         ),
         elevation: 0,
         backgroundColor: Colors.transparent,
-        // actions: [
-        //   Padding(
-        //       padding: const EdgeInsets.only(right: screenPadding),
-        //       child: Align(
-        //         alignment: Alignment.center,
-        //         child: Text(
-        //           "${screenModel.currentField.index+1}/${screenModel.formModels.length}",
-        //           style: Theme.of(context).textTheme.bodyText1?.adaptiveColor(
-        //               context: context,
-        //               color: colorOnBackground
-        //           ),
-        //         ),
-        //       )
-        //   )
-        // ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(screenPadding),
