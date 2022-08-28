@@ -33,8 +33,6 @@ class FirebaseDS with UserService {
       }
       return Result.empty();
     } catch (e) {
-      print("LoadUserError");
-      print(e);
       return Result.error();
     }
   }

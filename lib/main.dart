@@ -5,6 +5,7 @@ import 'package:pillowtalk/data/repository/user_repository.dart';
 import 'package:pillowtalk/data/source/firebase_ds.dart';
 import 'package:pillowtalk/presentation/screens/auth/auth_view_model.dart';
 import 'package:pillowtalk/presentation/screens/auth/landing_view_model.dart';
+import 'package:pillowtalk/presentation/screens/home/home_view_model.dart';
 import 'package:pillowtalk/resources/my_router.dart';
 import 'package:pillowtalk/resources/my_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -35,6 +36,9 @@ void setupInjection() {
   );
   getIt.registerLazySingleton<AuthViewModel>(() => AuthViewModel(),
     dispose: (vm) { vm.dispose(); }
+  );
+  getIt.registerLazySingleton<HomeViewModel>(() => HomeViewModel(),
+      dispose: (vm) { vm.dispose(); }
   );
 }
 

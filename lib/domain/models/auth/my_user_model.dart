@@ -3,6 +3,8 @@ class MyUser {
   late String _phone;
   late String _username;
 
+  String get username => _username;
+
   MyUser({
     required String phone,
     required String username,

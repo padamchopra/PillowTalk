@@ -32,8 +32,8 @@ class MyTheme {
         fontSize: 20, fontWeight: FontWeight.w400, letterSpacing: 0.15),
     subtitle1: GoogleFonts.poppins(
         fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.15),
-    subtitle2: GoogleFonts.poppins(
-        fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.1),
+    subtitle2: GoogleFonts.roboto(
+        fontSize: 16, fontWeight: FontWeight.w500, letterSpacing: 0),
     bodyText1: GoogleFonts.roboto(
         fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.5),
     bodyText2: GoogleFonts.roboto(

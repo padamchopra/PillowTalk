@@ -26,7 +26,7 @@ class LandingViewModel extends ViewModel {
   void _processStateUpdate(AuthLandingState state) {
     switch (state) {
       case AuthLandingState.noUser:
-        // No-op
+        _screenModel.loading = false;
         break;
       case AuthLandingState.noUsername:
         _screenModel.updateFormStepEvent = Event(AuthFormStep.username);
@@ -35,7 +35,6 @@ class LandingViewModel extends ViewModel {
         _screenModel.navigateScreenEvent = Event(Screens.home);
         break;
     }
-    _screenModel.loading = false;
     notify();
   }
 

@@ -18,6 +18,18 @@ class UserRepository {
 
   String? _verificationId;
   MyUser? _user;
+  MyUser? get user => _user;
+
+  Future<Result<bool>> signOutUser() async {
+    try {
+      await _remoteService.auth.signOut();
+      _user = null;
+      _verificationId = null;
+      return Result.success(true);
+    } catch (e) {
+      return Result.error();
+    }
+  }
 
   Future<void> submitPhoneNumber(String phoneNumber, Function(Result<AuthFormStep>) callback) async {
     await _remoteService.auth.verifyPhoneNumber(

@@ -22,10 +22,12 @@ class Result<T> {
     _isSuccess = true;
   }
 
-  Result.error({ErrorMessageModel? error}) {
+  Result.error({ErrorMessageModel? error, String? msg}) {
     _isSuccess = false;
     if (error != null) {
       _error = error;
+    } else if (msg != null) {
+      _error = ErrorMessageModel(msg: msg);
     }
   }
 }

@@ -29,3 +29,12 @@ final colorAccent = ColorSet(
 );
 
 final colorError = ColorSet(light: Colors.red.shade500, dark: Colors.red.shade300);
+
+final colorAdaptiveSurface = ColorSet(
+    light: colorSurface.light,
+    dark: colorScaffoldBackground.dark,
+);
+final colorOnAdaptiveSurface = ColorSet(
+    light: colorOnSurface.light,
+    dark:  colorOnBackground.dark
+);
