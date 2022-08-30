@@ -14,7 +14,7 @@ class HomeViewModel extends ViewModel {
 
   HomeViewModel() {
     _screenModel = HomeScreenModel();
-    _screenModel.loading = true;
+    _screenModel.loading = false;
     _getUsername();
 
     _signOutUseCase.stream.listen((success) {
@@ -31,7 +31,7 @@ class HomeViewModel extends ViewModel {
       _screenModel.setUsername(user.data?.username);
     } else {
       // TODO: process error by telling user something better
-      _screenModel.popAndNavigateEvent = Event(Screens.authentication);
+      _screenModel.popAndNavigateEvent = Event(Screens.landing);
       _screenModel.loading = false;
     }
   }
@@ -45,7 +45,7 @@ class HomeViewModel extends ViewModel {
   }
 
   void newChatButtonClicked() {
-    _screenModel.loading = true;
+    _screenModel.navigateEvent = Event(Screens.newChat);
     notify();
   }
 
@@ -53,7 +53,7 @@ class HomeViewModel extends ViewModel {
 
   void _processSignOutResponse(bool success) {
     if (success) {
-      _screenModel.popAndNavigateEvent = Event(Screens.authentication);
+      _screenModel.popAndNavigateEvent = Event(Screens.landing);
     }
     _screenModel.loading = false;
     notify();

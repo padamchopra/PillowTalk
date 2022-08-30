@@ -3,6 +3,8 @@ import 'package:pillowtalk/extensions/text_style_ext.dart';
 import 'package:pillowtalk/extensions/build_context_ext.dart';
 import 'package:pillowtalk/main.dart';
 import 'package:pillowtalk/presentation/components/adaptive_progress_indicator.dart';
+import 'package:pillowtalk/presentation/components/appbar/linear_loading_indicator.dart';
+import 'package:pillowtalk/presentation/components/appbar/primary_app_bar.dart';
 import 'package:pillowtalk/presentation/components/buttons/custom_icon_button.dart';
 import 'package:pillowtalk/presentation/screens/home/chat_tile_model.dart';
 import 'package:pillowtalk/presentation/screens/home/home_screen_model.dart';
@@ -32,26 +34,33 @@ class _HomeScreenState extends State<HomeScreen> with ViewModelListener {
         emoji: "👋",
         username: "shadowbox",
         message: "😳😋",
-        isAuthorSelf: true,
-        unreadNumber: 0,
+        isAuthorSelf: false,
+        unreadNumber: 2,
     ),
     ChatTileModel(
       emoji: "🌿",
       username: "planthead",
-      message: "❤️🔕🔔",
-      isAuthorSelf: false,
-      unreadNumber: 2,
+      message: "❤️",
+      isAuthorSelf: true,
+      unreadNumber: 0,
     )
   ];
 
   @override
   Widget build(BuildContext context) {
-    final navigateEvent = screenModel.popAndNavigateEvent?.data;
-    if (navigateEvent != null) {
-      Future.microtask(() => Navigator.pushNamedAndRemoveUntil(
-        context, navigateEvent.name, (route) => false,
-      ));
-    }
+    Future.microtask(() {
+      final popNavigateEvent = screenModel.popAndNavigateEvent?.data;
+      if (popNavigateEvent != null) {
+        Navigator.pushNamedAndRemoveUntil(
+          context, popNavigateEvent.name, (route) => false,
+        );
+      }
+
+      final navigateEvent = screenModel.navigateEvent?.data;
+      if (navigateEvent != null) {
+        Navigator.pushNamed(context, navigateEvent.name);
+      }
+    });
 
     return Scaffold(
       appBar: buildAppBar(context),
@@ -61,32 +70,16 @@ class _HomeScreenState extends State<HomeScreen> with ViewModelListener {
               itemCount: demoList.length,
               itemBuilder: (context, index) => buildListTile(context, demoList[index])
           ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: screenModel.loading ? LinearProgressIndicator(
-              color: context.getColor(colorAccent),
-              backgroundColor: context.getColorWithOpacity(
-                  colorPrimary,
-                  TextOpacity.medium
-              ),
-            ) : Container(),
-          )
+          LinearLoadingIndicator(loading: screenModel.loading)
         ],
       ),
     );
   }
 
   AppBar buildAppBar(BuildContext context) {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      titleSpacing: screenPadding,
-      title: Text(
-        screenModel.appBarTitle,
-        style: Theme.of(context).textTheme.subtitle1?.adaptiveColor(
-            context: context, color: colorOnPrimary
-        ).copyWith(fontWeight: FontWeight.w700),
-      ),
-      centerTitle: false,
+    return PrimaryAppBar.build(
+      context: context,
+      title: screenModel.appBarTitle,
       actions: [
         CustomIconButton(
           onPressed: screenModel.loading ? null : () => viewModel.newChatButtonClicked(),
@@ -99,8 +92,6 @@ class _HomeScreenState extends State<HomeScreen> with ViewModelListener {
           tooltip: "Logout",
         ),
       ],
-      elevation: 1,
-      backgroundColor: context.getColor(colorPrimary),
     );
   }
 

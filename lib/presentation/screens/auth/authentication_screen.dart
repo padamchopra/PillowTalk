@@ -50,7 +50,6 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> with ViewMo
             color: context.getColor(colorOnBackground),
           ),
           splashRadius: Theme.of(context).iconTheme.size ?? 14 * 1.5,
-
         ),
         elevation: 0,
         backgroundColor: Colors.transparent,
