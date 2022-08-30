@@ -24,7 +24,11 @@ class CustomIconButton extends StatelessWidget {
         color: context.getColorWithOpacity(colorOnPrimary, TextOpacity.medium),
       ),
       tooltip: tooltip,
-      splashRadius: Theme.of(context).iconTheme.size ?? 14 * 1.5,
+      splashRadius: getButtonWidth(context)/2,
     );
+  }
+
+  static double getButtonWidth(BuildContext context) {
+    return (Theme.of(context).iconTheme.size ?? 14 * 1.5) * 2;
   }
 }

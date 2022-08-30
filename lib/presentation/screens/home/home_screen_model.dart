@@ -7,6 +7,7 @@ class HomeScreenModel {
   String appBarTitle = "Hi 👋";
   List<ChatTileModel> chatItems = [];
   Event<Screens>? popAndNavigateEvent;
+  Event<Screens>? navigateEvent;
 
   void setUsername(String? username) {
     if (username != null) {
